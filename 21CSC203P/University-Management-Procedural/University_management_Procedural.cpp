@@ -8,7 +8,7 @@ using namespace std;
 
 const char* HOST = "localhost";
 const char* USER = "root";
-const char* PW = "mohan12345";
+const char* PW = "password";
 const char* DB = "university";
 
 // Global variables for student data
