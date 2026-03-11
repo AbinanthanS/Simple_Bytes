@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgb(117, 129, 197);
+        }
+        button{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(114, 159, 201);
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 25px;
+        }
+        #keys{
+            display: grid;
+            grid-template-columns: repeat(4,1fr) ;
+            gap: 10xp;
+            padding: 25px;
+        
+        }
+        #calc{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(67, 92, 146);
+            border-radius: 25px;
+            max-width: 500px;
+            overflow: hidden;
+            
+        }
+        #display{
+            width: 95%;
+            padding: 20px;
+            font-size: 5rem;
+            text-align: right;
+            border: solid rgb(2, 255, 213);
+            background-color: rgb(160, 142, 160);
+        }
+        button:hover{
+            background-color: rgb(180, 194, 206);
+        }
+        button:active{
+            background-color: rgb(1, 106, 204);
+        }
+        .opbtn{
+            background-color: rgb(1, 50, 97);
+        }
+        .result{
+            background-color: rgb(0, 129, 250);
+        }
+        
+    </style>
+</head>
+<body>
+    <div id = "calc">
+        <input id = "display" readonly>
+        <div id = "keys">
+            <button onclick="appendToDisplay('+')" class = "opbtn">+</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')" class = "opbtn">-</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')" class = "opbtn">*</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('/')" class = "opbtn">/</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()" class = "result">=</button>
+            <button onclick="clearDisplay()" class = "opbtn">C</button>
+        </div>
+    </div>
+    <script>
+
+        const display = document.getElementById("display");
+        let t = 0;
+        function appendToDisplay(x){
+            if ((x == '/'||x == '*'||x == '+'||x == '-') && (t == 1)){
+                display.value += x;
+            }else if ((x != '/'||x != '*'||x != '+'||x != '-') && (t == 1)){
+                clearDisplay();
+                display.value += x;
+            }else{
+                if (t == 0) display.value += x;
+            }
+        }
+        function clearDisplay(){
+            t=0;
+            display.value = "";
+        }
+        function calculate(){
+            try{
+                display.value = eval(display.value);
+                t  = 1;
+            }catch(error){
+                display.value = "Error";
+            }
+            
+        }
+    </script>
+</body>
+</html>

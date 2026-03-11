@@ -1,0 +1,9 @@
+*.exe
+*.o
+*.dll
+*.so
+*.win
+*.dev
+*.layout
+
+.vscode
