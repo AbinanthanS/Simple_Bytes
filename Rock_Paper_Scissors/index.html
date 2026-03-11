@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock_Paper_Scissors</title>
+    <style>
+        .greentext,#playerscore{
+    color: green;
+}
+.redtext,#computerscore{
+    color: red;
+}
+    </style>
+</head>
+<body>
+    <h1>Rock_Paper_Scissors</h1>
+    <div class = "choices">
+        <button onclick="playgame('rock')">ROCK</button>
+        <button onclick="playgame('paper')">PAPER</button>
+        <button onclick="playgame('scissors')">SCISSORS</button>
+    </div>
+
+    <div id = "playerdisplay">PLAYER: </div>
+    <div id = "computerdisplay">COMPUTER: </div>
+    <div id = "resultdisplay">RESULT:  </div>
+
+    <div class = "scoredisplay">PLAYER_SCORE :
+        <span id = "playerscore">0</span>
+    </div>
+    <div class = "scoredisplay">COMPUTER_SCORE :
+        <span id = "computerscore">0</span>
+    </div>
+
+   <script>
+    const choices = ["rock","paper","scissors"];
+const playerdisplay = document.getElementById("playerdisplay");
+const computerdisplay = document.getElementById("computerdisplay");
+const resultdisplay = document.getElementById("resultdisplay");
+const playerscoredisplay = document.getElementById("playerscore");
+const computerscoredisplay = document.getElementById("computerscore");
+
+let player_count = 0;
+let computer_count = 0;
+
+function playgame(playerchoice){
+    const computerchoice = choices[Math.floor(Math.random()*3)];
+    console.log(computerchoice);
+    let result;
+       if (playerchoice == "rock" && computerchoice == "scissors"){
+        result = "YOU WIN";
+        player_count++;
+       }
+       else if (playerchoice == "paper" && computerchoice == "rock"){
+        result = "YOU WIN";
+        player_count++;
+       }
+       else if (playerchoice == "scissors" && computerchoice == "paper"){
+        result = "YOU WIN";
+        player_count++;
+       }
+       else if (playerchoice == computerchoice)result = "TIED";
+       else{
+        computer_count++;
+        result = "YOU LOOSE";
+       }
+   
+
+    playerdisplay.textContent = `PLAYER -> ${playerchoice}`;
+    computerdisplay.textContent = `COMPUTER -> ${computerchoice}`;
+    resultdisplay.textContent = result;
+    resultdisplay.classList.remove("greentext","redtext");
+    switch(result){
+        case "YOU WIN":
+            resultdisplay.classList.add("greentext");
+            playerscoredisplay.textContent = player_count;
+            break;
+        case "YOU LOOSE":
+            resultdisplay.classList.add("redtext");
+            computerscoredisplay.textContent = computer_count;
+            break;
+    }
+}
+   </script>
+</body>
+</html>
+
+
+
+
+

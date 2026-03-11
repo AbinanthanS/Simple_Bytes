@@ -1,0 +1,5 @@
+Performance metrics:
+
+SPEEDUP = T(sequential)/T(parallel)
+
+EFFICIENCY = SPEEDUP/NUMBER OF THREADS
